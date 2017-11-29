@@ -8,7 +8,7 @@ class Account_book {
 	int price;
 	int index;
 	
-	static int last_index=0;
+	static int last_index;
 	
 	//생성자 - 초기화 수행
 	public Account_book(String name, String date, int price, int index) {
@@ -28,7 +28,6 @@ class Account_book {
 		this.date = write_content.next();
 		System.out.print("구매 가격(ex.1000)(원):");
 		this.price = write_content.nextInt();
-		this.index++;
 	}
 	
 	
@@ -63,17 +62,28 @@ class Account_book {
 	}
 	
 	//가계부 삭제 메소드
-	public void delete(Account_book[] account_book, int last){
-		for(int i=this.index;i<last;i++){
-			account_book[i] = account_book[i+1];
+	public void delete(Account_book[] account_book,int last){
+		Scanner delete_yes_no = new Scanner(System.in);
+		String delete_next;
+		System.out.println("구매한 물품명: "+this.name+"\t구매 날짜: "+this.date+"\t구매 가격: "+this.price+"\n");
+		System.out.println("정말로 삭제하시겠습니까?");
+		System.out.println("a.예\tb.아니오\n:");
+		delete_next = delete_yes_no.next();
+		if(delete_next.equals("a")){
+			for(int i=this.index;i<last;i++){
+				account_book[i] = account_book[i+1];
+			}
+			last_index= last_index-1;
+			System.out.println(last_index);
 		}
+	
 	}
 	
 	//가계부 리스트 출력
 	static public void account_list_print(Account_book[] account_book){
 		if(account_book[0].name!=null){
 			System.out.println("   \t물품명\t날짜\t가격");
-			for(int i=0;i<last_index;i++){
+			for(int i=0;i<last_index+1;i++){
 				System.out.println("["+(i+1)+"]\t"+account_book[i].name+"\t"+account_book[i].date+"\t"+account_book[i].price+"\t\n");
 			}
 		}else
