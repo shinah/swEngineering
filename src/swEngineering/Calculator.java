@@ -1,4 +1,4 @@
-package sweHomework;
+package swEngineering;
 
 import java.util.Scanner;
 
