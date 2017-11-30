@@ -29,7 +29,44 @@ public class swe {
 			}while(func<0&&func>5);
 			
 			switch(func) {
-					case 1: break;
+					case 1:
+						Memo[] memoManager = new Memo[1000];
+						memoManager[0] = new Memo();
+						for(String i = ""; !i.equals("d");)
+						{
+							Memo.memo_list_print(memoManager);
+							System.out.println("작업을 입력해주세요.");
+							i = scan.next();
+							switch(i) {
+								case "a":
+									if(Memo.lastindex==0) {
+										memoManager[Memo.lastindex].create();
+									}
+									else {
+										memoManager[Memo.lastindex] = new Memo();
+										memoManager[Memo.lastindex].create();
+									}
+									break;
+								case "b":
+									System.out.println("수정하고자 하는 메모의 번호를 입력하세요.");
+									Memo.index = scan.nextInt();
+									memoManager[Memo.index].update();
+									break;
+								case "c":
+									System.out.println("삭제하고자 하는 메모의 번호를 입력하세요.");
+									Memo.index = scan.nextInt();
+									System.out.println(Memo.index+"번을 삭제해도 될까요? 'a.예', 'b.아니오'");
+									String answer = scan.next();
+									if(answer.equals("a")) {
+										memoManager[Memo.index].delete(memoManager, Memo.lastindex);
+										break;
+									}else {
+										break;}
+								default:
+									break;
+							}
+						}
+						break;
 					case 2: break;
 						
 					case 3: 
