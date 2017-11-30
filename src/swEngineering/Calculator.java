@@ -1,160 +1,319 @@
 package swEngineering;
 
+
+
 import java.util.Scanner;
 
+
+
 class Calculator{
+
 	
+
 	String selected;
+
 	float result;
+
 	
+
 	public static void print_list(Calculator[] cal) {
+
 		for(int i=0; i<cal.length; i++)
+
 			System.out.println("nothing\n");
+
 	}
+
 	
+
 	public void calculating() {
+
 		if (this.selected.equals("a")) {
+
 			execArithmetic();
+
 		}
+
 		else {
+
 			execTransform();
+
 		}		
+
 	}
+
 	
+
 	public void execArithmetic() {
+
 		
+
 		Scanner scanner = new Scanner(System.in);
+
 		Arithmetic arm = new Arithmetic();
+
 		String operator="";
+
 		
-		System.out.println("ì›í•˜ëŠ” ìˆ˜ë¥¼ ìž…ë ¥í•˜ì„¸ìš”");
+
+		System.out.println("¿øÇÏ´Â ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+
 		arm.operand_1 = scanner.nextInt();
+
 		
+
 		System.out.println("a. +(plus)");
+
 		System.out.println("b. -(minus)");
+
 		System.out.println("c. *(multiply)");
+
 		System.out.println("d. /(divide)");
+
 		operator = scanner.next();
+
 		
-		System.out.println("ì›í•˜ëŠ” ìˆ˜ë¥¼ ìž…ë ¥í•˜ì„¸ìš”");
+
+		System.out.println("¿øÇÏ´Â ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+
 		arm.operand_2 = scanner.nextInt();
+
 		
+
 		if(operator.equals("a") || operator.equals("+")) {
+
 			this.result = arm.add();
+
 			operator = "+";
+
 		}
+
 		else if(operator.equals("b") || operator.equals("-")) {
+
 			this.result = arm.subtract();
+
 			operator = "-";
+
 		}
+
 		else if(operator.equals("c")|| operator.equals("*")) {
+
 			this.result = arm.multiply();
+
 			operator = "*";
+
 		}
+
 		else if(operator.equals("d")|| operator.equals("/")) {
+
 			this.result = arm.divide();
+
 			operator = "/";
+
 		}
+
 		else {
-			System.out.println("ìž˜ëª»ëœ ê°’ì„ ìž…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.");
+
+			System.out.println("Àß¸øµÈ °ªÀ» ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.");
+
 		}
+
 			
+
 		System.out.println(arm.operand_1+operator+arm.operand_2+"="+this.result);
+
 		
+
 	}
+
 	
+
 	public void execTransform() {
+
 		Scanner scanner = new Scanner(System.in);
+
 		Transformation trnf = new Transformation();
-		System.out.println("ì›í•˜ëŠ” ìˆ˜ë¥¼ ìž…ë ¥í•˜ì„¸ìš”");
+
+		System.out.println("¿øÇÏ´Â ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+
 		trnf.number = scanner.nextInt();
+
 		String unitOfResult="";
+
 		System.out.println("a. pound");
+
 		System.out.println("b. kg");
+
 		System.out.println("c. inch");
+
 		System.out.println("d. cm");
-		System.out.println("e. Â°F");
-		System.out.println("f. Â°C");
+
+		System.out.println("e. ¡ÆF");
+
+		System.out.println("f. ¡ÆC");
+
 		trnf.unit = scanner.next();
+
 		
+
 		if(trnf.unit.equals("a") ||trnf.unit.equals("b") ) {
+
 			if(trnf.unit.equals("a")) {
+
 				trnf.unit = "pound";
+
 				unitOfResult = "kg";
+
 			}
+
 			else {
+
 				trnf.unit = "kg";
+
 				unitOfResult = "pound";
+
 			}
+
 			this.result = trnf.poundKg();
+
 		}
+
 		else if(trnf.unit.equals("c") || trnf.unit.equals("d")) {
+
 			if(trnf.unit.equals("c")) {
+
 				trnf.unit = "inch";
+
 				unitOfResult = "cm";
+
 			}
+
 			else {
+
 				trnf.unit = "cm";
+
 				unitOfResult = "inch";
+
 			}
+
 			this.result = trnf.inchCm();
+
 		}
+
 		else if(trnf.unit.equals("e") || trnf.unit.equals("f")) {
+
 			if(trnf.unit.equals("e")) {
+
 				trnf.unit = "fahrenheit";
-				unitOfResult = "Â°C";
+
+				unitOfResult = "¡ÆC";
+
 			}
+
 			else {
+
 				trnf.unit = "celsius";
-				unitOfResult = "Â°F";
+
+				unitOfResult = "¡ÆF";
+
 			}
+
 			this.result = trnf.fC();
+
 		}
+
 		else {
-			System.out.println("ìž˜ëª»ëœ ê°’ì„ ìž…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.");
+
+			System.out.println("Àß¸øµÈ °ªÀ» ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.");
+
 		}
+
 		System.out.println(this.result+unitOfResult);
+
 	}
+
 }
+
+
 
 class Arithmetic {
+
 	
-	int operand_1, operand_2; //ì‚¬ì¹™ì—°ì‚°ì˜ ëŒ€ìƒì´ ë  ë‘ê°œì˜ ìˆ˜
 
-	public int add(){ // ë§ì…ˆì„ ìˆ˜í–‰í•˜ëŠ” ë©”ì†Œë“œ
+	int operand_1, operand_2; //»çÄ¢¿¬»êÀÇ ´ë»óÀÌ µÉ µÎ°³ÀÇ ¼ö
+
+
+
+	public int add(){ // µ¡¼ÀÀ» ¼öÇàÇÏ´Â ¸Þ¼Òµå
+
 		return operand_1+operand_2;
+
 	}
 
-	public int subtract(){ // ëº„ì…ˆì„ ìˆ˜í–‰í•˜ëŠ” ë©”ì†Œë“œ 
+
+
+	public int subtract(){ // »¬¼ÀÀ» ¼öÇàÇÏ´Â ¸Þ¼Òµå 
+
 		return operand_1-operand_2;
+
 	}
 
-	public int multiply(){ // ê³±ì…ˆì„ ìˆ˜í–‰í•˜ëŠ” ë©”ì†Œë“œ 
+
+
+	public int multiply(){ // °ö¼ÀÀ» ¼öÇàÇÏ´Â ¸Þ¼Òµå 
+
 		return operand_1*operand_2;
+
 	}
 
-	public int divide(){ //ë‚˜ëˆ—ì…ˆì„ ìˆ˜í–‰í•˜ëŠ” ë©”ì†Œë“œ 
+
+
+	public int divide(){ //³ª´°¼ÀÀ» ¼öÇàÇÏ´Â ¸Þ¼Òµå 
+
 		return operand_1/operand_2;
+
 	}
+
 }
 
+
+
 class Transformation{
-	float number; //ë³€í™˜í•  ê°’
+
+	float number; //º¯È¯ÇÒ °ª
+
    	String unit;
+
 	
+
 	public float poundKg(){
+
 		if(unit.equals("pound")) number *= 0.453592;
+
 		else number *= 2.204623;
+
 		return number;
+
 	} 
+
    	public float inchCm(){
+
    		if(unit.equals("inch")) number *= 2.54;
+
 		else number *= 0.393701;
+
    		return number;
+
    	}
+
    	public float fC(){
+
    		if(unit.equals("fahrenheit")) number *= -17.222222;
+
 		else number *= 33.8;
+
    		return number;
+
    	}
+
 }
