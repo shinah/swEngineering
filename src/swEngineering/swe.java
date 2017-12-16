@@ -10,6 +10,7 @@ public class swe {
         
       //case3 accountbook을 위한 선언들
   		int update_index,delete_index;
+  		String delete_yes_no;
   		Account_book.last_index=-1;
   		Account_book[] account_book = new Account_book[100];
   		account_book[0] = new Account_book(null,null,0,0);
@@ -70,23 +71,15 @@ public class swe {
                 	do {
 
                         Calculator calculator = new Calculator();
-
                         System.out.println("a. 사칙연산");
-
                         System.out.println("b. 단위변환");
-
                         System.out.println("c. 돌아가기");
-
                         calculator.selected = scan.next();
 
                         if(calculator.selected.equals("a") || calculator.selected.equals("b")) {
-
                             calculator.calculating();
-
                             Scanner scan1 = new Scanner(System.in);
-
                             String clear = scan1.nextLine();
-
                         }
 
                         else break;
@@ -100,33 +93,21 @@ public class swe {
 					do{						
 
 						System.out.print("원하는 작업을 입력해주세요:");
-
 						String input = scan2.next();
-
 						System.out.println();
-
 						
 
 						if(input.equals("a")){
-
 							Account_book.last_index++;
-
 							if(Account_book.last_index==0){
-
 								account_book[Account_book.last_index].write();
-
 								account_book[Account_book.last_index].index = Account_book.last_index;
-
 							}
 
 							else{
-
 								account_book[Account_book.last_index] = new Account_book(null,null,0,0);
-
 								account_book[Account_book.last_index].write();
-
 								account_book[Account_book.last_index].index = Account_book.last_index;
-
 							}
 
 							Account_book.account_list_print(account_book);
@@ -134,25 +115,25 @@ public class swe {
 						}
 
 						else if(input.equals("b")){
-
 							System.out.print("수정하고자 하는 가계부 번호를 입력하세요:");
-
 							update_index = scan2.nextInt();
-
 							account_book[update_index-1].update();
-
 							Account_book.account_list_print(account_book);
-
 						}
 
 						else if(input.equals("c")){
-
 							System.out.println("삭제하고자 하는 가계부 번호를 입력하세요:");
-
 							delete_index = scan2.nextInt();
-
-							account_book[delete_index-1].delete(account_book,Account_book.last_index);
-
+							System.out.println("구매한 물품명: "+account_book[delete_index-1].name+"\t구매 날짜: "+account_book[delete_index-1].date+"\t구매 가격: "+account_book[delete_index-1].price+"\n");
+							System.out.println("정말로 삭제하시겠습니까?");
+							System.out.println("a.예\tb.아니오\n:");
+	
+							delete_yes_no = scan2.next();
+							
+							if(delete_yes_no.equals("a")){
+								account_book[delete_index - 1].delete(account_book, Account_book.last_index);
+							}
+	
 							Account_book.account_list_print(account_book);
 
 						}
@@ -166,7 +147,6 @@ public class swe {
 						break;
                 case 4:
                 	 System.out.println("이용해 주셔서 감사합니다.");
-
                      System.exit(0);
                     
                     
