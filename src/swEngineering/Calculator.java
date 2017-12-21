@@ -2,20 +2,19 @@ package swEngineering;
 import java.util.Scanner;
 
 class Calculator{
-	
 	String selected;
 	float result;
-	
+
 	public static void print_list(Calculator[] cal) {
 		for(int i=0; i<cal.length; i++)
 			System.out.println("nothing\n");
 	}
 
 	public void calculating() {
-		if (this.selected.equals("a")) 
+		if (this.selected.equals("a"))
 			execArithmetic();
-		else 
-			execTransform();
+		else
+			execTransform();	
 	}
 
 	public void execArithmetic() {
@@ -30,13 +29,14 @@ class Calculator{
 		System.out.println("b. -(minus)");
 		System.out.println("c. *(multiply)");
 		System.out.println("d. /(divide)");
+
 		operator = scanner.next();
 
 		System.out.println("원하는 수를 입력하세요");
 		arm.operand_2 = scanner.nextInt();
 
 		if(operator.equals("a") || operator.equals("+")) {
-			this.result = arm.add();
+			this.result = arm.add(arm.operand_1, arm.operand_2);
 			operator = "+";
 		}
 		else if(operator.equals("b") || operator.equals("-")) {
@@ -53,25 +53,24 @@ class Calculator{
 		}
 		else {
 			System.out.println("잘못된 값을 입력하셨습니다.");
-		}			
-
+		}
 		System.out.println(arm.operand_1+operator+arm.operand_2+"="+this.result);
-	}
+	}	
 
 	public void execTransform() {
 		Scanner scanner = new Scanner(System.in);
 		Transformation trnf = new Transformation();
-		String unitOfResult="";
 		System.out.println("원하는 수를 입력하세요");
 		trnf.number = scanner.nextInt();
-
+		String unitOfResult="";
+		
 		System.out.println("a. pound");
 		System.out.println("b. kg");
 		System.out.println("c. inch");
 		System.out.println("d. cm");
 		System.out.println("e. °F");
 		System.out.println("f. °C");
-		trnf.unit = scanner.next();
+		trnf.unit = scanner.next();		
 
 		if(trnf.unit.equals("a") ||trnf.unit.equals("b") ) {
 			if(trnf.unit.equals("a")) {
@@ -82,8 +81,7 @@ class Calculator{
 				trnf.unit = "kg";
 				unitOfResult = "pound";
 			}
-
-			this.result = trnf.poundKg();
+			this.result = trnf.poundKg(trnf.unit, trnf.number);
 		}
 		else if(trnf.unit.equals("c") || trnf.unit.equals("d")) {
 			if(trnf.unit.equals("c")) {
@@ -110,19 +108,16 @@ class Calculator{
 		else {
 			System.out.println("잘못된 값을 입력하셨습니다.");
 		}
-
 		System.out.println(this.result+unitOfResult);
 	}
-
 }
 
-
-
 class Arithmetic {
+
 	int operand_1, operand_2; //사칙연산의 대상이 될 두개의 수
 
-	public int add(){ // 덧셈을 수행하는 메소드
-		return operand_1+operand_2;
+	public int add(int num1, int num2){ // 덧셈을 수행하는 메소드
+		return num1+num2;
 	}
 
 	public int subtract(){ // 뺄셈을 수행하는 메소드 
@@ -136,33 +131,30 @@ class Arithmetic {
 	public int divide(){ //나눗셈을 수행하는 메소드 
 		return operand_1/operand_2;
 	}
-
+	
 }
 
-
-
 class Transformation{
+
 	float number; //변환할 값
    	String unit;
-
-	public float poundKg(){
-		if(unit.equals("pound")) number *= 0.453592;
-		else number *= 2.204623;
-
-		return number;
+	
+	public float poundKg(String unit,float num){
+		if(unit.equals("pound")) num *= 0.453592;
+		else num *= 2.204623;
+		
+		return num;
 	} 
-
+	
    	public float inchCm(){
    		if(unit.equals("inch")) number *= 2.54;
 		else number *= 0.393701;
-   		
    		return number;
    	}
-
+   	
    	public float fC(){
    		if(unit.equals("fahrenheit")) number *= -17.222222;
 		else number *= 33.8;
-
    		return number;
    	}
 
