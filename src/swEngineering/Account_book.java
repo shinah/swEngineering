@@ -12,7 +12,7 @@ class Account_book {
 
 	
 
-	//ìƒì„±ì - ì´ˆê¸°í™” ìˆ˜í–‰
+	//»ı¼ºÀÚ - ÃÊ±âÈ­ ¼öÇà
 	public Account_book(String name, String date, int price, int index) {
 		super();
 		this.name = name;
@@ -23,51 +23,51 @@ class Account_book {
 
 	
 
-	//ê°€ê³„ë¶€ ì‘ì„± ë©”ì†Œë“œ
+	//°¡°èºÎ ÀÛ¼º ¸Ş¼Òµå
 	public void write(){
 		Scanner write_content = new Scanner(System.in);
-		System.out.print("êµ¬ë§¤í•œ ë¬¼í’ˆëª…:");
+		System.out.print("±¸¸ÅÇÑ ¹°Ç°¸í:");
 		this.name = write_content.next();
-		System.out.print("êµ¬ë§¤ë‚ ì§œ(ex.170605):");
+		System.out.print("±¸¸Å³¯Â¥(ex.170605):");
 		this.date = write_content.next();
-		System.out.print("êµ¬ë§¤ ê°€ê²©(ex.1000)(ì›):");
+		System.out.print("±¸¸Å °¡°İ(ex.1000)(¿ø):");
 		this.price = write_content.nextInt();
 	}
 
 	
 
-	//ê°€ê³„ë¶€ ìˆ˜ì • ë©”ì†Œë“œ
+	//°¡°èºÎ ¼öÁ¤ ¸Ş¼Òµå
 	public void update(){
 		Scanner update_content = new Scanner(System.in);
 		Scanner update_yes_no = new Scanner(System.in);
 		String update_next;
 
-		System.out.println("êµ¬ë§¤í•œ ë¬¼í’ˆëª…: "+this.name+"\têµ¬ë§¤ ë‚ ì§œ: "+this.date+"\têµ¬ë§¤ ê°€ê²©: "+this.price+"\n");
+		System.out.println("±¸¸ÅÇÑ ¹°Ç°¸í: "+this.name+"\t±¸¸Å ³¯Â¥: "+this.date+"\t±¸¸Å °¡°İ: "+this.price+"\n");
 
 		do{
-			System.out.println("ìˆ˜ì •í•˜ê³ ì í•˜ëŠ” ë‚´ìš©ì´ ì–´ë–¤ ë¶€ë¶„ì…ë‹ˆê¹Œ?");
-			System.out.print("b1.êµ¬ë§¤í•œ ë¬¼í’ˆëª…\nb2.êµ¬ë§¤ë‚ ì§œ(ex.170605)\nb3.êµ¬ë§¤ ê°€ê²©\n:");
+			System.out.println("¼öÁ¤ÇÏ°íÀÚ ÇÏ´Â ³»¿ëÀÌ ¾î¶² ºÎºĞÀÔ´Ï±î?");
+			System.out.print("b1.±¸¸ÅÇÑ ¹°Ç°¸í\nb2.±¸¸Å³¯Â¥(ex.170605)\nb3.±¸¸Å °¡°İ\n:");
 			String update_num  =update_content.next();
 			if(update_num.equals("b1")){
-				System.out.print("ìˆ˜ì •í•  ë¬¼í’ˆëª…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”:");
+				System.out.print("¼öÁ¤ÇÒ ¹°Ç°¸íÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä:");
 				this.name = update_content.next();
 			}
 
 			else if(update_num.equals("b2")){
-				System.out.print("ìˆ˜ì •í•  êµ¬ì… ë‚ ì§œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”:");
+				System.out.print("¼öÁ¤ÇÒ ±¸ÀÔ ³¯Â¥¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä:");
 				this.date = update_content.next();
 
 			}
 
 			else if(update_num.equals("b3")){
-				System.out.print("ìˆ˜ì •í•  êµ¬ë§¤ê°€ê²©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”:");
+				System.out.print("¼öÁ¤ÇÒ ±¸¸Å°¡°İÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä:");
 				this.price = update_content.nextInt();
 
 			}
 
-			System.out.println("\nêµ¬ë§¤í•œ ë¬¼í’ˆëª…: "+this.name+"\têµ¬ë§¤ ë‚ ì§œ: "+this.date+"\têµ¬ë§¤ ê°€ê²©: "+this.price+"\n");
-			System.out.println("ë” ìˆ˜ì •í•˜ì‹¤ ë‚´ìš©ì´ ìˆìŠµë‹ˆê¹Œ?");
-			System.out.println("a.ì˜ˆ\tb.ì•„ë‹ˆì˜¤\n:");
+			System.out.println("\n±¸¸ÅÇÑ ¹°Ç°¸í: "+this.name+"\t±¸¸Å ³¯Â¥: "+this.date+"\t±¸¸Å °¡°İ: "+this.price+"\n");
+			System.out.println("´õ ¼öÁ¤ÇÏ½Ç ³»¿ëÀÌ ÀÖ½À´Ï±î?");
+			System.out.println("a.¿¹\tb.¾Æ´Ï¿À\n:");
 
 			update_next = update_yes_no.next();
 
@@ -77,7 +77,7 @@ class Account_book {
 
 	
 
-	//ê°€ê³„ë¶€ ì‚­ì œ ë©”ì†Œë“œ
+	//°¡°èºÎ »èÁ¦ ¸Ş¼Òµå
 
 	public void delete(Account_book[] account_book,int last){
 		System.out.println("");
@@ -91,19 +91,19 @@ class Account_book {
 
 	
 
-	//ê°€ê³„ë¶€ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
+	//°¡°èºÎ ¸®½ºÆ® Ãâ·Â
 	static public void account_list_print(Account_book[] account_book){
 		if(account_book[0].name!=null){
-			System.out.println("   \të¬¼í’ˆëª…\të‚ ì§œ\tê°€ê²©");
+			System.out.println("   \t¹°Ç°¸í\t³¯Â¥\t°¡°İ");
 			for(int i=0;i<last_index+1;i++){
 				System.out.println("["+(i+1)+"]\t"+account_book[i].name+"\t"+account_book[i].date+"\t"+account_book[i].price+"\t\n");
 			}
 
 		}else
 
-			System.out.println("ì‘ì„±ëœ ê°€ê³„ë¶€ê°€ ì—†ìŠµë‹ˆë‹¤.\n");
+			System.out.println("ÀÛ¼ºµÈ °¡°èºÎ°¡ ¾ø½À´Ï´Ù.\n");
 
-		System.out.println("a.ê°€ê³„ë¶€ ì‘ì„±\nb.ê°€ê³„ë¶€ ìˆ˜ì •\nc.ê°€ê³„ë¶€ ì‚­ì œ\nd.ëŒì•„ê°€ê¸°");
+		System.out.println("a.°¡°èºÎ ÀÛ¼º\nb.°¡°èºÎ ¼öÁ¤\nc.°¡°èºÎ »èÁ¦\nd.µ¹¾Æ°¡±â");
 
 	}
 

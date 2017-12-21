@@ -8,7 +8,7 @@ public class swe {
         Scanner scan = new Scanner(System.in);
         int func = 0;
         
-      //case3 accountbookì„ ìœ„í•œ ì„ ì–¸ë“¤
+      //case3 accountbookÀ» À§ÇÑ ¼±¾ğµé
   		int update_index,delete_index;
   		String delete_yes_no;
   		Account_book.last_index=-1;
@@ -35,7 +35,7 @@ public class swe {
 					for(String i = ""; !i.equals("d");)
 					{
 						Memo.memo_list_print(memoManager);
-						System.out.println("ì‘ì—…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+						System.out.println("ÀÛ¾÷À» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 						i = scan.next();
 						switch(i) {
 							case "a":
@@ -48,14 +48,14 @@ public class swe {
 								}
 								break;
 							case "b":
-								System.out.println("ìˆ˜ì •í•˜ê³ ì í•˜ëŠ” ë©”ëª¨ì˜ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
+								System.out.println("¼öÁ¤ÇÏ°íÀÚ ÇÏ´Â ¸Ş¸ğÀÇ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
 								Memo.index = scan.nextInt();
 								memoManager[Memo.index].update();
 								break;
 							case "c":
-								System.out.println("ì‚­ì œí•˜ê³ ì í•˜ëŠ” ë©”ëª¨ì˜ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
+								System.out.println("»èÁ¦ÇÏ°íÀÚ ÇÏ´Â ¸Ş¸ğÀÇ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
 								Memo.index = scan.nextInt();
-								System.out.println(Memo.index+"ë²ˆì„ ì‚­ì œí•´ë„ ë ê¹Œìš”? 'a.ì˜ˆ', 'b.ì•„ë‹ˆì˜¤'");
+								System.out.println(Memo.index+"¹øÀ» »èÁ¦ÇØµµ µÉ±î¿ä? 'a.¿¹', 'b.¾Æ´Ï¿À'");
 								String answer = scan.next();
 								if(answer.equals("a")) {
 									memoManager[Memo.index].delete(memoManager, Memo.lastindex);
@@ -71,9 +71,9 @@ public class swe {
                 	do {
 
                         Calculator calculator = new Calculator();
-                        System.out.println("a. ì‚¬ì¹™ì—°ì‚°");
-                        System.out.println("b. ë‹¨ìœ„ë³€í™˜");
-                        System.out.println("c. ëŒì•„ê°€ê¸°");
+                        System.out.println("a. »çÄ¢¿¬»ê");
+                        System.out.println("b. ´ÜÀ§º¯È¯");
+                        System.out.println("c. µ¹¾Æ°¡±â");
                         calculator.selected = scan.next();
 
                         if(calculator.selected.equals("a") || calculator.selected.equals("b")) {
@@ -92,7 +92,7 @@ public class swe {
 
 					do{						
 
-						System.out.print("ì›í•˜ëŠ” ì‘ì—…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”:");
+						System.out.print("¿øÇÏ´Â ÀÛ¾÷À» ÀÔ·ÂÇØÁÖ¼¼¿ä:");
 						String input = scan2.next();
 						System.out.println();
 						
@@ -115,18 +115,18 @@ public class swe {
 						}
 
 						else if(input.equals("b")){
-							System.out.print("ìˆ˜ì •í•˜ê³ ì í•˜ëŠ” ê°€ê³„ë¶€ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”:");
+							System.out.print("¼öÁ¤ÇÏ°íÀÚ ÇÏ´Â °¡°èºÎ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä:");
 							update_index = scan2.nextInt();
 							account_book[update_index-1].update();
 							Account_book.account_list_print(account_book);
 						}
 
 						else if(input.equals("c")){
-							System.out.println("ì‚­ì œí•˜ê³ ì í•˜ëŠ” ê°€ê³„ë¶€ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”:");
+							System.out.println("»èÁ¦ÇÏ°íÀÚ ÇÏ´Â °¡°èºÎ ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä:");
 							delete_index = scan2.nextInt();
-							System.out.println("êµ¬ë§¤í•œ ë¬¼í’ˆëª…: "+account_book[delete_index-1].name+"\têµ¬ë§¤ ë‚ ì§œ: "+account_book[delete_index-1].date+"\têµ¬ë§¤ ê°€ê²©: "+account_book[delete_index-1].price+"\n");
-							System.out.println("ì •ë§ë¡œ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?");
-							System.out.println("a.ì˜ˆ\tb.ì•„ë‹ˆì˜¤\n:");
+							System.out.println("±¸¸ÅÇÑ ¹°Ç°¸í: "+account_book[delete_index-1].name+"\t±¸¸Å ³¯Â¥: "+account_book[delete_index-1].date+"\t±¸¸Å °¡°İ: "+account_book[delete_index-1].price+"\n");
+							System.out.println("Á¤¸»·Î »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?");
+							System.out.println("a.¿¹\tb.¾Æ´Ï¿À\n:");
 	
 							delete_yes_no = scan2.next();
 							
@@ -146,7 +146,7 @@ public class swe {
 
 						break;
                 case 4:
-                	 System.out.println("ì´ìš©í•´ ì£¼ì…”ì„œ ê°ì‚¬í•©ë‹ˆë‹¤.");
+                	 System.out.println("ÀÌ¿ëÇØ ÁÖ¼Å¼­ °¨»çÇÕ´Ï´Ù.");
                      System.exit(0);
                     
                     

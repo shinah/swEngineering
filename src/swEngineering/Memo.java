@@ -14,6 +14,11 @@ public class Memo {
 		this.content = null;
 	}
 	
+	public Memo(String a) {
+		this.content = a;
+		lastindex++;
+	}
+	
 	//작성
 	public void create() {
 		System.out.println("메모를 작성하세요.");

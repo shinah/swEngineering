@@ -6,6 +6,39 @@ import java.util.Scanner;
 import org.junit.Test;
 
 public class UnitTest {
+
+	
+	//Memo test¸¦ À§ÇÑ ¼±¾ð
+	Memo[] memo = new Memo[2];
+	
+	//Memo create Å×½ºÆ®
+	@Test
+	public void testMemoWrite(){
+		Memo.lastindex=0;
+		memo[Memo.lastindex] = new Memo("Å×½ºÆ®");
+		
+		System.out.println("Memo ÀÔ·Â Test('Å×½ºÆ®'¸¦ Á¦¿ÜÇÑ ¸Þ¸ð¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.)");
+
+		memo[Memo.lastindex] = new Memo();
+		memo[Memo.lastindex].create();
+		
+		assertTrue(memo[0].content!=memo[1].content);
+	}
+	
+	//Memo »èÁ¦ Å×½ºÆ®
+	@Test
+	public void testMemoDelete(){
+		Memo.lastindex=0;
+		
+		System.out.println("Memo »èÁ¦ Test");
+
+		memo[Memo.lastindex] = new Memo("1¹ø");
+		memo[Memo.lastindex] = new Memo("2¹ø");
+		
+		memo[0].delete(memo, Memo.lastindex);
+	
+		assertTrue(Memo.lastindex == 1);
+	}
 	
 	//**unit test of Calculator**//
 	//Arithmetic test
@@ -30,39 +63,39 @@ public class UnitTest {
 	//**unit test of Calculator end**//
 	
 	
-	//Account_book testë¥¼ ìœ„í•œ ì„ ì–¸
-	Account_book[] account_book = new Account_book[10];
-	
-	//ê°€ê³„ë¶€ ìž…ë ¥ í…ŒìŠ¤íŠ¸
-	@Test
-	public void testAccountWrite(){
-		int index=0,last_index=-1;
-		account_book[0] = new Account_book(null,null,0,0);
+	//Account_book test¸¦ À§ÇÑ ¼±¾ð
+		Account_book[] account_book = new Account_book[10];
 		
-		System.out.println("[ìž…ë ¥ í…ŒìŠ¤íŠ¸]êµ¬ë§¤ ë‚´ì—­ ìž…ë ¥");
-		account_book[index].write();
-		last_index++;
-		
-		assertTrue(account_book[index].name==account_book[last_index].name);
-	}
-	
-	//ê°€ê³„ë¶€ ì‚­ì œ í…ŒìŠ¤íŠ¸
-	@Test
-	public void testAccountDelete(){
-		int index=0,last_index=1;
-		String delete;
-		account_book[0] = new Account_book("ê°€ë°©","170605",10000,0);
-		account_book[1] = new Account_book("ì‹ ë°œ","171002",20000,1);
-		
-		System.out.println("\n[ì‚­ì œ í…ŒìŠ¤íŠ¸]ë¬¼í’ˆ:"+account_book[index].name+" êµ¬ë§¤ë‚ ì§œ:"+account_book[index].date+" êµ¬ë§¤ê°€ê²©:"+account_book[index].price);
-		System.out.println("ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?\na.ì˜ˆ  b.ì•„ë‹ˆì˜¤");
-		Scanner sc = new Scanner(System.in);
-		delete = sc.next();
-		
-		if(delete.equals("a")){
-			account_book[index].delete(account_book, last_index);
-			assertTrue(account_book[index] == account_book[index+1]);
+		//°¡°èºÎ ÀÔ·Â Å×½ºÆ®
+		@Test
+		public void testAccountWrite(){
+			int index=0,last_index=-1;
+			account_book[0] = new Account_book(null,null,0,0);
+			
+			System.out.println("[ÀÔ·Â Å×½ºÆ®]±¸¸Å ³»¿ª ÀÔ·Â");
+			account_book[index].write();
+			last_index++;
+			
+			assertTrue(account_book[index].name==account_book[last_index].name);
 		}
-	}
-
+		
+		//°¡°èºÎ »èÁ¦ Å×½ºÆ®
+		@Test
+		public void testAccountDelete(){
+			int index=0,last_index=1;
+			String delete;
+			account_book[0] = new Account_book("°¡¹æ","170605",10000,0);
+			account_book[1] = new Account_book("½Å¹ß","171002",20000,1);
+			
+			System.out.println("\n[»èÁ¦ Å×½ºÆ®]¹°Ç°:"+account_book[index].name+" ±¸¸Å³¯Â¥:"+account_book[index].date+" ±¸¸Å°¡°Ý:"+account_book[index].price);
+			System.out.println("»èÁ¦ÇÏ½Ã°Ú½À´Ï±î?\na.¿¹  b.¾Æ´Ï¿À");
+			Scanner sc = new Scanner(System.in);
+			delete = sc.next();
+			
+			if(delete.equals("a")){
+				account_book[index].delete(account_book, last_index);
+				assertTrue(account_book[index] == account_book[index+1]);
+			}
+		}
+		
 }
