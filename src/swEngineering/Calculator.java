@@ -22,7 +22,7 @@ class Calculator{
 		Arithmetic arm = new Arithmetic();
 		String operator="";
 
-		System.out.println("¿øÇÏ´Â ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+		System.out.println("ì›í•˜ëŠ” ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
 		arm.operand_1 = scanner.nextInt();
 
 		System.out.println("a. +(plus)");
@@ -32,7 +32,7 @@ class Calculator{
 
 		operator = scanner.next();
 
-		System.out.println("¿øÇÏ´Â ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+		System.out.println("ì›í•˜ëŠ” ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
 		arm.operand_2 = scanner.nextInt();
 
 		if(operator.equals("a") || operator.equals("+")) {
@@ -52,7 +52,7 @@ class Calculator{
 			operator = "/";
 		}
 		else {
-			System.out.println("Àß¸øµÈ °ªÀ» ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.");
+			System.out.println("ì˜ëª»ëœ ê°’ì„ ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.");
 		}
 		System.out.println(arm.operand_1+operator+arm.operand_2+"="+this.result);
 	}	
@@ -60,7 +60,7 @@ class Calculator{
 	public void execTransform() {
 		Scanner scanner = new Scanner(System.in);
 		Transformation trnf = new Transformation();
-		System.out.println("¿øÇÏ´Â ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+		System.out.println("ì›í•˜ëŠ” ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
 		trnf.number = scanner.nextInt();
 		String unitOfResult="";
 		
@@ -68,8 +68,8 @@ class Calculator{
 		System.out.println("b. kg");
 		System.out.println("c. inch");
 		System.out.println("d. cm");
-		System.out.println("e. ¡ÆF");
-		System.out.println("f. ¡ÆC");
+		System.out.println("e. Â°F");
+		System.out.println("f. Â°C");
 		trnf.unit = scanner.next();		
 
 		if(trnf.unit.equals("a") ||trnf.unit.equals("b") ) {
@@ -97,16 +97,16 @@ class Calculator{
 		else if(trnf.unit.equals("e") || trnf.unit.equals("f")) {
 			if(trnf.unit.equals("e")) {
 				trnf.unit = "fahrenheit";
-				unitOfResult = "¡ÆC";
+				unitOfResult = "Â°C";
 			}
 			else {
 				trnf.unit = "celsius";
-				unitOfResult = "¡ÆF";
+				unitOfResult = "Â°F";
 			}
 			this.result = trnf.fC();
 		}
 		else {
-			System.out.println("Àß¸øµÈ °ªÀ» ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.");
+			System.out.println("ì˜ëª»ëœ ê°’ì„ ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.");
 		}
 		System.out.println(this.result+unitOfResult);
 	}
@@ -114,21 +114,21 @@ class Calculator{
 
 class Arithmetic {
 
-	int operand_1, operand_2; //»çÄ¢¿¬»êÀÇ ´ë»óÀÌ µÉ µÎ°³ÀÇ ¼ö
+	int operand_1, operand_2; //ì‚¬ì¹™ì—°ì‚°ì˜ ëŒ€ìƒì´ ë  ë‘ê°œì˜ ìˆ˜
 
-	public int add(int num1, int num2){ // µ¡¼ÀÀ» ¼öÇàÇÏ´Â ¸Ş¼Òµå
+	public int add(int num1, int num2){ // ë§ì…ˆì„ ìˆ˜í–‰í•˜ëŠ” ë©”ì†Œë“œ
 		return num1+num2;
 	}
 
-	public int subtract(){ // »¬¼ÀÀ» ¼öÇàÇÏ´Â ¸Ş¼Òµå 
+	public int subtract(){ // ëº„ì…ˆì„ ìˆ˜í–‰í•˜ëŠ” ë©”ì†Œë“œ 
 		return operand_1-operand_2;
 	}
 
-	public int multiply(){ // °ö¼ÀÀ» ¼öÇàÇÏ´Â ¸Ş¼Òµå 
+	public int multiply(){ // ê³±ì…ˆì„ ìˆ˜í–‰í•˜ëŠ” ë©”ì†Œë“œ 
 		return operand_1*operand_2;
 	}
 
-	public int divide(){ //³ª´°¼ÀÀ» ¼öÇàÇÏ´Â ¸Ş¼Òµå 
+	public int divide(){ //ë‚˜ëˆ—ì…ˆì„ ìˆ˜í–‰í•˜ëŠ” ë©”ì†Œë“œ 
 		return operand_1/operand_2;
 	}
 	
@@ -136,7 +136,7 @@ class Arithmetic {
 
 class Transformation{
 
-	float number; //º¯È¯ÇÒ °ª
+	float number; //ë³€í™˜í•  ê°’
    	String unit;
 	
 	public float poundKg(String unit,float num){
